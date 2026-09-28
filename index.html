@@ -1,246 +1,307 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>حاسبتي الذكية</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>حاسبتي الذكية</title>
 
-  <style>
-    * {
-      box-sizing: border-box;
-      font-family: Arial, sans-serif;
-    }
+<style>
+* {
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
 
-    body {
-      margin: 0;
-      min-height: 100vh;
-      background: linear-gradient(135deg, #111827, #1e3a8a);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 20px;
-    }
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #111827, #1d4ed8);
+  padding: 20px;
+}
 
-    .container {
-      width: 100%;
-      max-width: 430px;
-    }
+.container {
+  max-width: 450px;
+  margin: auto;
+}
 
-    h1 {
-      color: white;
-      text-align: center;
-      margin-bottom: 15px;
-    }
+h1 {
+  color: white;
+  text-align: center;
+  margin-bottom: 20px;
+}
 
-    .calculator {
-      background: #18181b;
-      padding: 20px;
-      border-radius: 25px;
-      box-shadow: 0 15px 40px rgba(0,0,0,.4);
-    }
+.card {
+  background: #18181b;
+  padding: 18px;
+  border-radius: 22px;
+  margin-bottom: 18px;
+  box-shadow: 0 10px 30px rgba(0,0,0,.35);
+}
 
-    #display {
-      width: 100%;
-      height: 75px;
-      border: none;
-      border-radius: 15px;
-      margin-bottom: 15px;
-      padding: 10px 15px;
-      font-size: 30px;
-      text-align: right;
-      background: #27272a;
-      color: white;
-    }
+#display {
+  width: 100%;
+  height: 70px;
+  border: none;
+  border-radius: 14px;
+  background: #27272a;
+  color: white;
+  font-size: 30px;
+  text-align: right;
+  padding: 10px;
+  margin-bottom: 12px;
+}
 
-    .buttons {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 10px;
-    }
+.buttons {
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  gap: 9px;
+}
 
-    button {
-      height: 60px;
-      border: none;
-      border-radius: 15px;
-      font-size: 22px;
-      cursor: pointer;
-      background: #3f3f46;
-      color: white;
-    }
+button {
+  border: none;
+  border-radius: 13px;
+  height: 55px;
+  background: #3f3f46;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+}
 
-    button:active {
-      transform: scale(.96);
-    }
+button:active {
+  transform: scale(.96);
+}
 
-    .operator {
-      background: #2563eb;
-    }
+.blue { background: #2563eb; }
+.red { background: #dc2626; }
+.green { background: #16a34a; }
 
-    .clear {
-      background: #dc2626;
-    }
+.equal {
+  grid-column: span 2;
+}
 
-    .equal {
-      background: #16a34a;
-      grid-column: span 2;
-    }
+h2 {
+  color: white;
+  font-size: 20px;
+}
 
-    .tools {
-      margin-top: 20px;
-      background: #27272a;
-      padding: 15px;
-      border-radius: 18px;
-      color: white;
-    }
+input {
+  width: 100%;
+  padding: 13px;
+  margin: 5px 0;
+  border: none;
+  border-radius: 10px;
+  font-size: 17px;
+}
 
-    .tools h2 {
-      font-size: 20px;
-      margin-top: 0;
-    }
+.tool-button {
+  width: 100%;
+  margin-top: 8px;
+  background: #7c3aed;
+}
 
-    input {
-      width: 100%;
-      padding: 12px;
-      margin: 5px 0;
-      border: none;
-      border-radius: 10px;
-      font-size: 17px;
-    }
+.result {
+  color: white;
+  font-size: 17px;
+  line-height: 1.8;
+  margin-top: 12px;
+}
 
-    .discount-btn {
-      width: 100%;
-      background: #9333ea;
-      margin-top: 8px;
-      font-size: 18px;
-    }
-
-    #discountResult {
-      margin: 12px 0 0;
-      font-size: 18px;
-      line-height: 1.7;
-    }
-
-    .footer {
-      text-align: center;
-      color: #ddd;
-      margin-top: 15px;
-      font-size: 13px;
-    }
-  </style>
+.footer {
+  color: white;
+  text-align: center;
+  font-size: 13px;
+}
+</style>
 </head>
 
 <body>
 
 <div class="container">
 
-  <h1>🧮 حاسبتي الذكية</h1>
+<h1>🧮 حاسبتي الذكية</h1>
 
-  <div class="calculator">
+<!-- الحاسبة العادية -->
+<div class="card">
 
-    <input id="display" type="text" value="0" readonly>
+<input id="display" value="0" readonly>
 
-    <div class="buttons">
-      <button class="clear" onclick="clearDisplay()">C</button>
-      <button onclick="deleteLast()">⌫</button>
-      <button onclick="add('%')">%</button>
-      <button class="operator" onclick="add('/')">÷</button>
+<div class="buttons">
+<button class="red" onclick="clearDisplay()">C</button>
+<button onclick="deleteLast()">⌫</button>
+<button onclick="add('%')">%</button>
+<button class="blue" onclick="add('/')">÷</button>
 
-      <button onclick="add('7')">7</button>
-      <button onclick="add('8')">8</button>
-      <button onclick="add('9')">9</button>
-      <button class="operator" onclick="add('*')">×</button>
+<button onclick="add('7')">7</button>
+<button onclick="add('8')">8</button>
+<button onclick="add('9')">9</button>
+<button class="blue" onclick="add('*')">×</button>
 
-      <button onclick="add('4')">4</button>
-      <button onclick="add('5')">5</button>
-      <button onclick="add('6')">6</button>
-      <button class="operator" onclick="add('-')">−</button>
+<button onclick="add('4')">4</button>
+<button onclick="add('5')">5</button>
+<button onclick="add('6')">6</button>
+<button class="blue" onclick="add('-')">−</button>
 
-      <button onclick="add('1')">1</button>
-      <button onclick="add('2')">2</button>
-      <button onclick="add('3')">3</button>
-      <button class="operator" onclick="add('+')">+</button>
+<button onclick="add('1')">1</button>
+<button onclick="add('2')">2</button>
+<button onclick="add('3')">3</button>
+<button class="blue" onclick="add('+')">+</button>
 
-      <button onclick="add('0')">0</button>
-      <button onclick="add('.')">.</button>
-      <button class="equal" onclick="calculate()">=</button>
-    </div>
+<button onclick="add('0')">0</button>
+<button onclick="add('.')">.</button>
+<button class="green equal" onclick="calculate()">=</button>
+</div>
 
-    <div class="tools">
-      <h2>💰 حاسبة الخصم</h2>
+</div>
 
-      <input id="price" type="number" placeholder="السعر">
+<!-- الخصم -->
+<div class="card">
 
-      <input id="discount" type="number" placeholder="نسبة الخصم %">
+<h2>💰 حاسبة الخصم</h2>
 
-      <button class="discount-btn" onclick="calculateDiscount()">
-        احسب الخصم
-      </button>
+<input id="price" type="number" placeholder="السعر">
 
-      <p id="discountResult"></p>
-    </div>
+<input id="discount" type="number" placeholder="نسبة الخصم %">
 
-  </div>
+<button class="tool-button" onclick="discountCalc()">
+احسب الخصم
+</button>
 
-  <div class="footer">
-    حاسبتي الذكية © 2026
-  </div>
+<div id="discountResult" class="result"></div>
+
+</div>
+
+<!-- زيادة السعر -->
+<div class="card">
+
+<h2>📈 حاسبة زيادة السعر</h2>
+
+<input id="increasePrice" type="number" placeholder="السعر">
+
+<input id="increasePercent" type="number" placeholder="نسبة الزيادة %">
+
+<button class="tool-button" onclick="increaseCalc()">
+احسب السعر الجديد
+</button>
+
+<div id="increaseResult" class="result"></div>
+
+</div>
+
+<!-- الأقساط -->
+<div class="card">
+
+<h2>💳 حاسبة الأقساط</h2>
+
+<input id="loan" type="number" placeholder="المبلغ الكلي">
+
+<input id="months" type="number" placeholder="عدد الشهور">
+
+<button class="tool-button" onclick="installmentCalc()">
+احسب القسط
+</button>
+
+<div id="installmentResult" class="result"></div>
+
+</div>
+
+<div class="footer">
+حاسبتي الذكية © 2026
+</div>
 
 </div>
 
 <script>
-  const display = document.getElementById("display");
 
-  function add(value) {
-    if (display.value === "0") {
-      display.value = value;
-    } else {
-      display.value += value;
-    }
+const display = document.getElementById("display");
+
+function add(value) {
+  if (display.value === "0") {
+    display.value = value;
+  } else {
+    display.value += value;
   }
+}
 
-  function clearDisplay() {
+function clearDisplay() {
+  display.value = "0";
+}
+
+function deleteLast() {
+  if (display.value.length > 1) {
+    display.value = display.value.slice(0,-1);
+  } else {
     display.value = "0";
   }
+}
 
-  function deleteLast() {
-    if (display.value.length > 1) {
-      display.value = display.value.slice(0, -1);
-    } else {
-      display.value = "0";
-    }
+function calculate() {
+  try {
+    let expression = display.value.replace(/%/g,"/100");
+
+    let result = Function(
+      '"use strict"; return (' + expression + ')'
+    )();
+
+    display.value = result;
+  } catch {
+    display.value = "خطأ";
+  }
+}
+
+function discountCalc() {
+
+  let price = Number(document.getElementById("price").value);
+  let discount = Number(document.getElementById("discount").value);
+
+  if (price <= 0 || discount < 0) {
+    document.getElementById("discountResult").innerHTML =
+      "اكتب السعر ونسبة الخصم بشكل صحيح.";
+    return;
   }
 
-  function calculate() {
-    try {
-      let expression = display.value.replace(/%/g, "/100");
+  let value = price * discount / 100;
+  let finalPrice = price - value;
 
-      let result = Function(
-        '"use strict"; return (' + expression + ')'
-      )();
+  document.getElementById("discountResult").innerHTML =
+    "قيمة الخصم: " + value.toFixed(2) +
+    "<br>السعر بعد الخصم: " + finalPrice.toFixed(2);
+}
 
-      display.value = result;
-    } catch {
-      display.value = "خطأ";
-    }
+function increaseCalc() {
+
+  let price = Number(document.getElementById("increasePrice").value);
+  let percent = Number(document.getElementById("increasePercent").value);
+
+  if (price <= 0 || percent < 0) {
+    document.getElementById("increaseResult").innerHTML =
+      "اكتب السعر ونسبة الزيادة بشكل صحيح.";
+    return;
   }
 
-  function calculateDiscount() {
-    const price = Number(document.getElementById("price").value);
-    const discount = Number(document.getElementById("discount").value);
-    const result = document.getElementById("discountResult");
+  let value = price * percent / 100;
+  let finalPrice = price + value;
 
-    if (price <= 0 || discount < 0) {
-      result.innerHTML = "اكتب السعر ونسبة الخصم بشكل صحيح.";
-      return;
-    }
+  document.getElementById("increaseResult").innerHTML =
+    "قيمة الزيادة: " + value.toFixed(2) +
+    "<br>السعر بعد الزيادة: " + finalPrice.toFixed(2);
+}
 
-    const discountValue = price * discount / 100;
-    const finalPrice = price - discountValue;
+function installmentCalc() {
 
-    result.innerHTML =
-      "قيمة الخصم: " + discountValue.toFixed(2) +
-      "<br>السعر بعد الخصم: " + finalPrice.toFixed(2);
+  let loan = Number(document.getElementById("loan").value);
+  let months = Number(document.getElementById("months").value);
+
+  if (loan <= 0 || months <= 0) {
+    document.getElementById("installmentResult").innerHTML =
+      "اكتب المبلغ وعدد الشهور بشكل صحيح.";
+    return;
   }
+
+  let monthly = loan / months;
+
+  document.getElementById("installmentResult").innerHTML =
+    "القسط الشهري: " + monthly.toFixed(2);
+}
+
 </script>
 
 </body>
