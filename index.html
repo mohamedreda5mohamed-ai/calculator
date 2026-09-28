@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>My Calculator</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, sans-serif;
+
+            background:
+                radial-gradient(circle at top, #3b3b5c, transparent 40%),
+                linear-gradient(135deg, #111827, #1e293b, #0f172a);
+        }
+
+        .calculator {
+            width: 330px;
+            padding: 20px;
+            border-radius: 25px;
+            background: #171717;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+        }
+
+        h1 {
+            color: white;
+            text-align: center;
+            font-size: 24px;
+            margin-top: 0;
+        }
+
+        .display {
+            background: #000;
+            border-radius: 15px;
+            padding: 15px;
+            margin-bottom: 15px;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            margin: 5px 0;
+            border: none;
+            border-radius: 10px;
+            background: #262626;
+            color: white;
+            font-size: 18px;
+            outline: none;
+        }
+
+        .buttons {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+
+        button {
+            height: 60px;
+            border: none;
+            border-radius: 50%;
+            background: #333;
+            color: white;
+            font-size: 22px;
+            cursor: pointer;
+            transition: 0.15s;
+        }
+
+        button:hover {
+            transform: scale(1.05);
+            background: #444;
+        }
+
+        button:active {
+            transform: scale(0.95);
+        }
+
+        .operator {
+            background: #ff9500;
+        }
+
+        .clear {
+            background: #a5a5a5;
+            color: black;
+        }
+
+        .equal {
+            background: #ff9500;
+        }
+
+        #result {
+            color: white;
+            text-align: right;
+            font-size: 30px;
+            min-height: 40px;
+            margin: 10px 0 0;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="calculator">
+
+        <h1>آلة حاسبة</h1>
+
+        <div class="display">
+            <input id="num1" type="number" placeholder="الرقم الأول">
+            <input id="num2" type="number" placeholder="الرقم الثاني">
+
+            <h2 id="result">0</h2>
+        </div>
+
+        <div class="buttons">
+
+            <button class="clear" onclick="clearCalculator()">C</button>
+            <button onclick="calculate('/')">÷</button>
+            <button onclick="calculate('*')">×</button>
+            <button class="operator" onclick="calculate('-')">−</button>
+
+            <button onclick="calculate('+')">+</button>
+            <button onclick="calculate('=')" class="equal">=</button>
+
+        </div>
+
+    </div>
+
+    <script>
+        let firstNumber = null;
+        let operator = null;
+
+        function calculate(op) {
+
+            if (op === "=") {
+
+                let secondNumber =
+                    Number(document.getElementById("num2").value);
+
+                let result;
+
+                if (operator === "+") {
+                    result = firstNumber + secondNumber;
+                }
+
+                else if (operator === "-") {
+                    result = firstNumber - secondNumber;
+                }
+
+                else if (operator === "*") {
+                    result = firstNumber * secondNumber;
+                }
+
+                else if (operator === "/") {
+                    result = firstNumber / secondNumber;
+                }
+
+                document.getElementById("result").innerText = result;
+
+                return;
+            }
+
+            firstNumber =
+                Number(document.getElementById("num1").value);
+
+            operator = op;
+        }
+
+        function clearCalculator() {
+
+            document.getElementById("num1").value = "";
+            document.getElementById("num2").value = "";
+
+            document.getElementById("result").innerText = "0";
+
+            firstNumber = null;
+            operator = null;
+        }
+    </script>
+
+</body>
+</html>
