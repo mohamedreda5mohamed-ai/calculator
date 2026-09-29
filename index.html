@@ -2,199 +2,163 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>متجري | متجر إلكتروني</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>صمّم موقعك معنا</title>
 
 <style>
-*{box-sizing:border-box;font-family:Arial,sans-serif}
-body{margin:0;background:#f5f5f5;color:#222}
-header{background:#111827;color:white;padding:18px;text-align:center}
-header h1{margin:0 0 8px}
-.hero{background:linear-gradient(135deg,#2563eb,#7c3aed);color:white;padding:35px 20px;text-align:center}
-.hero h2{font-size:30px;margin:5px}
-.hero p{font-size:17px}
-.container{max-width:1100px;margin:auto;padding:20px}
-.products{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}
-.card{background:white;border-radius:15px;padding:15px;box-shadow:0 4px 15px #0001}
-.product-img{height:170px;background:#e5e7eb;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:70px}
-.card h3{margin-bottom:5px}
-.price{font-size:21px;font-weight:bold;color:#2563eb}
-.old{color:#999;text-decoration:line-through;margin-right:8px;font-size:15px}
-button{border:0;border-radius:10px;padding:12px;cursor:pointer;font-size:16px}
-.buy{background:#16a34a;color:white;width:100%;margin-top:10px}
-.cart{background:#111827;color:white;width:100%;margin-top:20px}
-#cartBox{display:none;background:white;padding:20px;border-radius:15px;margin-top:20px}
-input{width:100%;padding:12px;margin:7px 0;border:1px solid #ddd;border-radius:8px}
-.whatsapp{display:block;text-align:center;background:#22c55e;color:white;text-decoration:none;padding:14px;border-radius:10px;margin-top:10px}
-footer{text-align:center;background:#111827;color:white;padding:20px;margin-top:30px}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:Arial,sans-serif;
+  background:#f5f7fb;
+  color:#222;
+}
+header{
+  background:#111827;
+  color:white;
+  padding:45px 20px;
+  text-align:center;
+}
+header h1{font-size:38px;margin:0 0 15px}
+header p{font-size:19px;color:#ddd}
+
+.container{
+  max-width:900px;
+  margin:30px auto;
+  padding:20px;
+}
+
+.card{
+  background:white;
+  padding:25px;
+  margin-bottom:20px;
+  border-radius:18px;
+  box-shadow:0 5px 20px #00000012;
+}
+
+.price{
+  font-size:30px;
+  font-weight:bold;
+  margin:15px 0;
+}
+
+ul{
+  line-height:2;
+  padding-right:25px;
+}
+
+button{
+  width:100%;
+  padding:15px;
+  border:0;
+  border-radius:12px;
+  background:#16a34a;
+  color:white;
+  font-size:18px;
+  cursor:pointer;
+}
+
+button:hover{background:#15803d}
+
+input,textarea{
+  width:100%;
+  padding:14px;
+  margin:8px 0 15px;
+  border:1px solid #ddd;
+  border-radius:10px;
+  font-size:16px;
+}
+
+footer{
+  text-align:center;
+  padding:25px;
+  color:#777;
+}
 </style>
 </head>
 
 <body>
 
 <header>
-<h1>🛍️ متجري</h1>
-<p>أفضل المنتجات والعروض</p>
+  <h1>🚀 اعمل موقعك الإلكتروني</h1>
+  <p>موقع احترافي وسريع لمشروعك أو محلك بسعر مناسب</p>
 </header>
-
-<section class="hero">
-<h2>🔥 عروض مميزة</h2>
-<p>اطلب منتجاتك بسهولة وسرعة</p>
-</section>
 
 <div class="container">
 
-<h2>🛒 المنتجات</h2>
+  <div class="card">
+    <h2>💻 موقع تجاري</h2>
 
-<div class="products">
+    <div class="price">ابتداءً من 300 جنيه</div>
 
-<div class="card">
-<div class="product-img">📱</div>
-<h3>هاتف ذكي</h3>
-<p>هاتف بمواصفات ممتازة للاستخدام اليومي.</p>
-<span class="price">5000 جنيه</span>
-<span class="old">5500</span>
-<button class="buy" onclick="addToCart('هاتف ذكي',5000)">أضف للسلة</button>
-</div>
+    <ul>
+      <li>✅ تصميم مناسب للموبايل</li>
+      <li>✅ صفحة لعرض منتجاتك أو خدماتك</li>
+      <li>✅ زر واتساب للتواصل</li>
+      <li>✅ سرعة تحميل جيدة</li>
+      <li>✅ نشر الموقع على الإنترنت</li>
+    </ul>
 
-<div class="card">
-<div class="product-img">🎧</div>
-<h3>سماعة لاسلكية</h3>
-<p>سماعة بلوتوث بجودة صوت ممتازة.</p>
-<span class="price">500 جنيه</span>
-<span class="old">650</span>
-<button class="buy" onclick="addToCart('سماعة لاسلكية',500)">أضف للسلة</button>
-</div>
+    <button onclick="document.getElementById('order').scrollIntoView()">
+      اطلب موقعك الآن
+    </button>
+  </div>
 
-<div class="card">
-<div class="product-img">⌚</div>
-<h3>ساعة ذكية</h3>
-<p>ساعة ذكية لمتابعة النشاط والإشعارات.</p>
-<span class="price">900 جنيه</span>
-<span class="old">1100</span>
-<button class="buy" onclick="addToCart('ساعة ذكية',900)">أضف للسلة</button>
-</div>
+  <div class="card" id="order">
+    <h2>📩 اطلب موقعك</h2>
 
-<div class="card">
-<div class="product-img">🎒</div>
-<h3>حقيبة</h3>
-<p>حقيبة عملية للاستخدام اليومي.</p>
-<span class="price">350 جنيه</span>
-<span class="old">450</span>
-<button class="buy" onclick="addToCart('حقيبة',350)">أضف للسلة</button>
-</div>
+    <label>اسمك</label>
+    <input id="name" placeholder="اكتب اسمك">
 
-</div>
+    <label>نوع النشاط</label>
+    <input id="business" placeholder="مثال: محل ملابس">
 
-<button class="cart" onclick="showCart()">🛒 عرض السلة</button>
+    <label>رقم الهاتف</label>
+    <input id="phone" placeholder="اكتب رقمك">
 
-<div id="cartBox">
-<h2>🛒 سلة المشتريات</h2>
-<div id="cartItems"></div>
-<h3 id="total"></h3>
+    <label>ماذا تريد في الموقع؟</label>
+    <textarea id="details" rows="4"
+      placeholder="اكتب تفاصيل الموقع الذي تريده"></textarea>
 
-<h3>بيانات الطلب</h3>
-
-<input id="name" placeholder="اسمك">
-<input id="phone" placeholder="رقم الهاتف">
-<input id="address" placeholder="العنوان">
-
-<button class="buy" onclick="sendOrder()">إرسال الطلب</button>
-
-<a class="whatsapp"
-href="https://wa.me/201000000000"
-target="_blank">
-💬 تواصل معنا على واتساب
-</a>
-</div>
+    <button onclick="sendOrder()">
+      إرسال الطلب على واتساب
+    </button>
+  </div>
 
 </div>
 
 <footer>
-<p>متجري © 2026</p>
-<p>جميع الحقوق محفوظة</p>
+  جميع الحقوق محفوظة © 2026
 </footer>
 
 <script>
-
-let cart=[];
-
-function addToCart(name,price){
-cart.push({name:name,price:price});
-alert("تمت إضافة المنتج إلى السلة ✅");
-}
-
-function showCart(){
-
-document.getElementById("cartBox").style.display="block";
-
-let items="";
-let total=0;
-
-if(cart.length===0){
-items="<p>السلة فارغة.</p>";
-}else{
-
-cart.forEach((item,index)=>{
-total+=item.price;
-
-items+=`
-<p>
-${item.name} - ${item.price} جنيه
-<button onclick="removeItem(${index})">❌</button>
-</p>
-`;
-});
-
-}
-
-document.getElementById("cartItems").innerHTML=items;
-document.getElementById("total").innerText=
-"الإجمالي: "+total+" جنيه";
-}
-
-function removeItem(index){
-cart.splice(index,1);
-showCart();
-}
-
 function sendOrder(){
 
-if(cart.length===0){
-alert("أضف منتجًا إلى السلة أولًا.");
-return;
+  let name = document.getElementById("name").value;
+  let business = document.getElementById("business").value;
+  let phone = document.getElementById("phone").value;
+  let details = document.getElementById("details").value;
+
+  if(!name || !business || !phone){
+    alert("من فضلك املأ الاسم والنشاط ورقم الهاتف");
+    return;
+  }
+
+  // غيّر الرقم ده لرقم واتساب الذي سيستقبل الطلبات
+  let whatsapp = "201000000000";
+
+  let message =
+    "طلب تصميم موقع جديد%0A%0A" +
+    "الاسم: " + encodeURIComponent(name) + "%0A" +
+    "النشاط: " + encodeURIComponent(business) + "%0A" +
+    "الهاتف: " + encodeURIComponent(phone) + "%0A" +
+    "التفاصيل: " + encodeURIComponent(details);
+
+  window.open(
+    "https://wa.me/" + whatsapp + "?text=" + message,
+    "_blank"
+  );
 }
-
-let name=document.getElementById("name").value;
-let phone=document.getElementById("phone").value;
-let address=document.getElementById("address").value;
-
-if(!name || !phone || !address){
-alert("من فضلك اكتب الاسم ورقم الهاتف والعنوان.");
-return;
-}
-
-let message="طلب جديد%0A";
-message+="الاسم: "+name+"%0A";
-message+="الهاتف: "+phone+"%0A";
-message+="العنوان: "+address+"%0A%0A";
-
-let total=0;
-
-cart.forEach(item=>{
-message+=item.name+" - "+item.price+" جنيه%0A";
-total+=item.price;
-});
-
-message+="%0Aالإجمالي: "+total+" جنيه";
-
-window.open(
-"https://wa.me/01205626780?text="+message,
-"_blank"
-);
-
-}
-
 </script>
 
 </body>
