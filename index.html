@@ -2,68 +2,97 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>صمّم موقعك معنا</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>موقعك الإلكتروني</title>
 
 <style>
 *{box-sizing:border-box}
+
 body{
   margin:0;
   font-family:Arial,sans-serif;
-  background:#f5f7fb;
-  color:#222;
+  background:#f3f4f6;
+  color:#111827;
 }
+
 header{
   background:#111827;
   color:white;
-  padding:45px 20px;
   text-align:center;
+  padding:45px 20px;
 }
-header h1{font-size:38px;margin:0 0 15px}
-header p{font-size:19px;color:#ddd}
+
+header h1{
+  font-size:36px;
+  margin:0 0 12px;
+}
+
+header p{
+  font-size:18px;
+  color:#d1d5db;
+}
 
 .container{
-  max-width:900px;
-  margin:30px auto;
-  padding:20px;
+  max-width:1000px;
+  margin:auto;
+  padding:25px 15px;
 }
 
 .card{
   background:white;
   padding:25px;
-  margin-bottom:20px;
+  margin-bottom:25px;
   border-radius:18px;
-  box-shadow:0 5px 20px #00000012;
+  box-shadow:0 5px 20px #0001;
+}
+
+.products{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:18px;
+}
+
+.product{
+  border:1px solid #ddd;
+  border-radius:15px;
+  padding:15px;
+  text-align:center;
+}
+
+.product .pic{
+  font-size:60px;
+  padding:15px;
 }
 
 .price{
-  font-size:30px;
+  font-size:22px;
   font-weight:bold;
-  margin:15px 0;
-}
-
-ul{
-  line-height:2;
-  padding-right:25px;
+  margin:10px;
 }
 
 button{
   width:100%;
-  padding:15px;
   border:0;
-  border-radius:12px;
+  border-radius:10px;
+  padding:13px;
   background:#16a34a;
   color:white;
-  font-size:18px;
+  font-size:17px;
   cursor:pointer;
 }
 
-button:hover{background:#15803d}
+button:hover{
+  background:#15803d;
+}
+
+.blue{
+  background:#2563eb;
+}
 
 input,textarea{
   width:100%;
-  padding:14px;
-  margin:8px 0 15px;
+  padding:13px;
+  margin:7px 0 14px;
   border:1px solid #ddd;
   border-radius:10px;
   font-size:16px;
@@ -80,44 +109,95 @@ footer{
 <body>
 
 <header>
-  <h1>🚀 اعمل موقعك الإلكتروني</h1>
-  <p>موقع احترافي وسريع لمشروعك أو محلك بسعر مناسب</p>
+  <h1>🚀 موقعك الإلكتروني</h1>
+  <p>نصمم لك موقعًا احترافيًا لمشروعك أو محلك</p>
 </header>
 
 <div class="container">
 
+  <!-- نموذج المتجر -->
   <div class="card">
-    <h2>💻 موقع تجاري</h2>
+    <h2>🛍️ نموذج متجر إلكتروني</h2>
+    <p>ده مثال على شكل متجر ممكن نعمله لك.</p>
 
-    <div class="price">ابتداءً من 300 جنيه</div>
+    <div class="products">
+
+      <div class="product">
+        <div class="pic">📱</div>
+        <h3>هاتف ذكي</h3>
+        <div class="price">5,000 جنيه</div>
+        <button onclick="addToCart('هاتف ذكي')">
+          أضف للسلة
+        </button>
+      </div>
+
+      <div class="product">
+        <div class="pic">🎧</div>
+        <h3>سماعة لاسلكية</h3>
+        <div class="price">750 جنيه</div>
+        <button onclick="addToCart('سماعة لاسلكية')">
+          أضف للسلة
+        </button>
+      </div>
+
+      <div class="product">
+        <div class="pic">⌚</div>
+        <h3>ساعة ذكية</h3>
+        <div class="price">1,200 جنيه</div>
+        <button onclick="addToCart('ساعة ذكية')">
+          أضف للسلة
+        </button>
+      </div>
+
+      <div class="product">
+        <div class="pic">🎒</div>
+        <h3>شنطة</h3>
+        <div class="price">600 جنيه</div>
+        <button onclick="addToCart('شنطة')">
+          أضف للسلة
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- السلة -->
+  <div class="card">
+    <h2>🛒 السلة</h2>
+    <p id="cart">السلة فارغة</p>
+  </div>
+
+  <!-- الخدمة -->
+  <div class="card">
+    <h2>💻 اعمل موقع لمشروعك</h2>
+
+    <p>
+      موقع مناسب للمحلات والمشروعات الصغيرة،
+      ويعمل على الهاتف والكمبيوتر.
+    </p>
 
     <ul>
-      <li>✅ تصميم مناسب للموبايل</li>
-      <li>✅ صفحة لعرض منتجاتك أو خدماتك</li>
-      <li>✅ زر واتساب للتواصل</li>
-      <li>✅ سرعة تحميل جيدة</li>
+      <li>✅ تصميم متجاوب مع الموبايل</li>
+      <li>✅ عرض المنتجات والخدمات</li>
+      <li>✅ زر واتساب</li>
       <li>✅ نشر الموقع على الإنترنت</li>
     </ul>
 
-    <button onclick="document.getElementById('order').scrollIntoView()">
-      اطلب موقعك الآن
-    </button>
+    <h2>ابتداءً من 300 جنيه</h2>
   </div>
 
-  <div class="card" id="order">
+  <!-- طلب الموقع -->
+  <div class="card">
     <h2>📩 اطلب موقعك</h2>
 
-    <label>اسمك</label>
-    <input id="name" placeholder="اكتب اسمك">
+    <input id="name" placeholder="اسمك">
 
-    <label>نوع النشاط</label>
-    <input id="business" placeholder="مثال: محل ملابس">
+    <input id="business" placeholder="نوع النشاط">
 
-    <label>رقم الهاتف</label>
-    <input id="phone" placeholder="اكتب رقمك">
+    <input id="phone" placeholder="رقم الهاتف">
 
-    <label>ماذا تريد في الموقع؟</label>
-    <textarea id="details" rows="4"
+    <textarea id="details"
+      rows="4"
       placeholder="اكتب تفاصيل الموقع الذي تريده"></textarea>
 
     <button onclick="sendOrder()">
@@ -128,37 +208,61 @@ footer{
 </div>
 
 <footer>
-  جميع الحقوق محفوظة © 2026
+  © 2026 جميع الحقوق محفوظة
 </footer>
 
 <script>
+
+let cartItems=[];
+
+function addToCart(product){
+
+  cartItems.push(product);
+
+  document.getElementById("cart").innerHTML =
+    cartItems.join("، ");
+
+}
+
 function sendOrder(){
 
-  let name = document.getElementById("name").value;
-  let business = document.getElementById("business").value;
-  let phone = document.getElementById("phone").value;
-  let details = document.getElementById("details").value;
+  let name=document.getElementById("name").value;
+  let business=document.getElementById("business").value;
+  let phone=document.getElementById("phone").value;
+  let details=document.getElementById("details").value;
 
   if(!name || !business || !phone){
+
     alert("من فضلك املأ الاسم والنشاط ورقم الهاتف");
+
     return;
   }
 
-  // غيّر الرقم ده لرقم واتساب الذي سيستقبل الطلبات
-  let whatsapp = "201000000000";
+  /*
+    غيّر الرقم ده لرقم واتساب استقبال الطلبات
+    مثال مصر:
+    010xxxxxxxx
+    يصبح:
+    2010xxxxxxxx
+  */
 
-  let message =
-    "طلب تصميم موقع جديد%0A%0A" +
-    "الاسم: " + encodeURIComponent(name) + "%0A" +
-    "النشاط: " + encodeURIComponent(business) + "%0A" +
-    "الهاتف: " + encodeURIComponent(phone) + "%0A" +
-    "التفاصيل: " + encodeURIComponent(details);
+  let whatsapp="201000000000";
+
+  let message=
+    "طلب تصميم موقع جديد\n\n"+
+    "الاسم: "+name+"\n"+
+    "النشاط: "+business+"\n"+
+    "الهاتف: "+phone+"\n"+
+    "التفاصيل: "+details;
 
   window.open(
-    "https://wa.me/" + whatsapp + "?text=" + message,
+    "https://wa.me/"+whatsapp+
+    "?text="+encodeURIComponent(message),
     "_blank"
   );
+
 }
+
 </script>
 
 </body>
